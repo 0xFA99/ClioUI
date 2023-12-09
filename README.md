@@ -4,7 +4,7 @@ ClioUI is NCurses library designed to simplify the development of command-line i
 # TODO
 - Window
   - [Title + Alignment](https://github.com/0xFA99/ClioUI/blob/main/assets/winTitleAlign.png) :white_check_mark:
-  - Border Color
+  - [Border Color](https://github.com/0xFA99/CLioUI/blob/main/assets/borderTitleAlign.mp4) :white_check_mark:
 - Layout
   - Vertical
   - Horizontal

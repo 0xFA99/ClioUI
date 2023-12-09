@@ -40,7 +40,9 @@ main(void)
     setWindowBorderColor(&win1, 4);
     wgetch(win1.window);
 
-    Window win2 = createWindowTitle(vec2i(50, 10), vec2i(1, 11), "WINDOW 2", CENTER);
+    Window win2 = createWindowTitle(
+            vec2i(50, 10), vec2i(1, 11), "WINDOW 2", CENTER);
+
     wgetch(win2.window);
 
     setWindowBorderColor(&win2, 1);
