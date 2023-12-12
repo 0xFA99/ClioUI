@@ -52,6 +52,12 @@ setWindowBorderColor(Window *win, short colorPair)
 void
 updateWindow(Window *win)
 {
+    wborder(win->window, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
+    wrefresh(win->window);
+
+    wresize(win->window, win->size.y, win->size.x);
+    mvwin(win->window, win->pos.y, win->pos.x);
+
     // Border
     wattron(win->window, COLOR_PAIR(win->colorPair));
     box(win->window, 0, 0);
@@ -59,14 +65,18 @@ updateWindow(Window *win)
 
     // Title
     if (win->title.length != 0) {
+        int titleX = 0;
         if (win->align == LEFT) {
-            mvwprintw(win->window, 0, (win->pos.x + 2), " %s ", win->title.text);
+            titleX = win->pos.x + 2;
         } else if (win->align == CENTER) {
-            mvwprintw(win->window, 0, (win->size.x - (win->title.length + 2)) / 2, " %s ", win->title.text);
+            titleX = (win->size.x - (win->title.length + 2)) / 2;
         } else {
-            mvwprintw(win->window, 0, (win->size.x - (win->title.length + 2)) - 3, " %s ", win->title.text);
+            titleX = (win->size.x - (win->title.length + 2)) - 3;
         }
+
+        mvwprintw(win->window, 0, titleX, " %s ", win->title.text);
     }
 
     wrefresh(win->window);
 }
+
