@@ -28,25 +28,21 @@ main(void)
     Layout hLayout = layout(NULL, HORIZONTAL);
 
     Window win1 = createWindowTitle(
-            vec2i(20, 40), vec2i(1, 1), "WINDOW 1", CENTER);
+            vec2i(20, 10), vec2i(1, 1), "WINDOW 1", CENTER);
 
-    wprintw(win1.window, "%d\n", win1.size.x);
-    wgetch(win1.window);
+    Window win2 = createWindowTitle(
+            vec2i(20, 10), vec2i(21, 1), "WINDOW 2", CENTER);
+
+    Window win3 = createWindowTitle(
+            vec2i(20, 10), vec2i(21, 1), "WINDOW 3", CENTER);
 
     addWindowToLayout(&hLayout, &win1);
-
-    wprintw(win1.window, "%d\n", win1.size.x);
-    wgetch(win1.window);
-
-    /*
-    Window win2 = createWindowTitle(
-            vec2i(50, 40), vec2i(51, 1), "WINDOW 2", CENTER);
-
     addWindowToLayout(&hLayout, &win2);
-    wgetch(win2.window);
+    addWindowToLayout(&hLayout, &win3);
 
-    endwin();
-    */
+    updateLayout(&hLayout);
+
+    wgetch(win3.window);
 
     endwin();
     return 0;
